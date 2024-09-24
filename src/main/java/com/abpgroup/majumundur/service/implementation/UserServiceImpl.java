@@ -31,8 +31,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
-        return convertToUserResponse(user);
+        try {
+            User user = userRepository.findByUsername(username);
+            return convertToUserResponse(user);
+        } catch (Exception e) {
+            throw new RuntimeException("User not found");
+        }
     }
 
     @Override
@@ -66,4 +70,5 @@ public class UserServiceImpl implements UserService {
                 .role(user.getRole())
                 .build();
     }
+
 }

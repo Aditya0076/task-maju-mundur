@@ -16,5 +16,5 @@ public class CommonResponse <T>{
     @JsonProperty("message")
     private String message;
     @JsonProperty("status")
-    private String status;
+    private int status;
 }
